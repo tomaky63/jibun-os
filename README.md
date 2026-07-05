@@ -1,36 +1,47 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# じぶんOS診断 — Web実装
 
-## Getting Started
+設計資料 `../docs/personality-os-diagnosis/` に基づく、Next.js 16（App Router）+ TypeScriptの静的サイトです。サーバー、DB、ログインを使わずに動作します。
 
-First, run the development server:
+## コマンド
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run dev           # 開発サーバー（http://localhost:3000）
+npm run build         # 静的サイトを out/ に生成
+npm run test          # スコアリングの受け入れテスト
+npm run ogp           # 16タイプのOGP画像を再生成
+npm run placeholders  # 旧SVGプレースホルダーを再生成
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 構成
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```text
+app/                  ルーティング（/, /quiz, /result/[slug], /types, /about）
+content/              16タイプ・40問・仕事/私生活/深層コンテンツ
+lib/scoring.ts        決定論的なスコアリング
+components/           診断フロー、結果画面、星空エンジン
+public/characters/    GPT Image 2で生成した16体の本番PNG
+public/ogp/           1200×630のタイプ別OGP画像
+scripts/              テスト、プレースホルダー、OGP生成
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 画像アセット
 
-## Learn More
+16体のキャラクターはGPT Image 2で個別生成し、`public/characters/{slug}.png` に配置済みです。共通プロンプトとタイプ別の象徴は `public/characters/PROMPTS.md` に記録しています。
 
-To learn more about Next.js, take a look at the following resources:
+OGPは生成キャラクターを使い、`scripts/generate-ogp.ps1` で日本語テキストと金枠を正確に合成します。再生成する場合はWindows PowerShell環境で `npm run ogp` を実行してください。
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## デプロイ
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- 公開URLを `NEXT_PUBLIC_SITE_URL` に設定してください。OGPの絶対URLに使用します。
+- `npm run build` で生成される `out/` を任意の静的ホスティングへ配置します。
+- 結果はURLクエリ `?p=` にエンコードされるため、サーバーなしで共有・再現できます。
 
-## Deploy on Vercel
+### GitHub Pages
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+`main` ブランチへのpushで `.github/workflows/deploy-pages.yml` が静的サイトを自動公開します。GitHub Actions上ではリポジトリ名から `basePath` と公開URLを組み立てるため、プロジェクトサイトのサブパスでも動作します。
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 今後の拡張候補
+
+- 縦型シェアカードのクライアント生成と現像演出
+- 計測イベント
+- サウンド・ハプティクス

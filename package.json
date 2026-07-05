@@ -5,7 +5,10 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "test": "node scripts/test-scoring.mts",
+    "placeholders": "node scripts/gen-placeholders.mjs",
+    "ogp": "powershell -NoProfile -ExecutionPolicy Bypass -Command \"Get-Content -Raw -Encoding UTF8 scripts/generate-ogp.ps1 | Invoke-Expression\""
   },
   "dependencies": {
     "next": "16.2.10",

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="LANTERN(ランタン)のプレースホルダ画像">
+<defs>
+  <radialGradient id="g1" cx="50%" cy="42%" r="55%">
+    <stop offset="0%" stop-color="#FFB74D" stop-opacity="0.85"/>
+    <stop offset="45%" stop-color="#FFB74D" stop-opacity="0.28"/>
+    <stop offset="100%" stop-color="#FFB74D" stop-opacity="0"/>
+  </radialGradient>
+  <radialGradient id="g2" cx="50%" cy="42%" r="30%">
+    <stop offset="0%" stop-color="#F5F3EE" stop-opacity="0.95"/>
+    <stop offset="60%" stop-color="#FFE0B2" stop-opacity="0.55"/>
+    <stop offset="100%" stop-color="#FFE0B2" stop-opacity="0"/>
+  </radialGradient>
+</defs>
+<circle cx="200" cy="168" r="150" fill="url(#g1)"/>
+<circle cx="200" cy="168" r="72" fill="url(#g2)"/>
+<circle cx="200" cy="168" r="10" fill="#F5F3EE"/>
+<circle cx="200" cy="168" r="118" fill="none" stroke="#E8C97A" stroke-opacity="0.55" stroke-width="1.6"/>
+<circle cx="200" cy="168" r="126" fill="none" stroke="#E8C97A" stroke-opacity="0.25" stroke-width="0.8"/>
+<path d="M200 30 l4 9 9 4 -9 4 -4 9 -4 -9 -9 -4 9 -4 z" fill="#E8C97A" fill-opacity="0.8"/>
+<text x="200" y="330" text-anchor="middle" font-family="Montserrat, sans-serif" font-size="30" letter-spacing="8" fill="#FFB74D">LANTERN</text>
+<text x="200" y="362" text-anchor="middle" font-family="sans-serif" font-size="17" fill="#F5F3EE" fill-opacity="0.7">ランタン</text>
+</svg>
