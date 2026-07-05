@@ -232,8 +232,20 @@ button { font-family: inherit; }
   background: rgba(17, 23, 53, 0.6);
   color: var(--ink);
   transition: border-color 0.2s ease, transform 0.15s ease;
+  min-width: 0;
+  overflow: hidden;
 }
 .type-card:hover { border-color: var(--gold); transform: translateY(-2px); text-decoration: none; }
+.type-card img {
+  display: block;
+  width: 100%;
+  max-width: 180px;
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 10px;
+  margin: 0 auto 12px;
+}
 .type-card .cn { font-size: 15px; font-weight: 500; letter-spacing: 0.12em; }
 .type-card .ep { font-size: 11.5px; color: var(--ink-faint); margin-top: 4px; }
 
